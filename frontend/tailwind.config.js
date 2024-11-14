@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jua: ["Jua", "sans-serif"],
+        noto: ["Noto Sans KR", "sans-serif"],
+        nanum: ["Nanum Pen Script", "cursive"],
+      }
+    },
   },
   plugins: [],
 }
