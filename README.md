@@ -43,6 +43,7 @@ gantt
     프로젝트 진행     :2024-11-10, 12d
     section 마무리
     최종 점검 및 배포  :2024-11-22, 1d
+```
 
 ## 6. 도메인
 서비스 도메인: [meme.rookedsysc.com](http://meme.rookedsysc.com)
