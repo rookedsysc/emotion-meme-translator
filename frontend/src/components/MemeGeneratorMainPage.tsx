@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
+
 interface Props {
   onTemplateSelect: (id: number) => void;
 }
@@ -55,8 +56,13 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
   }, [activeTemplate]);
 
   const handleTemplateClick = (id: number) => {
-    setActiveTemplate(id);
-    onTemplateSelect(id);
+    if (activeTemplate === id) {
+      setActiveTemplate(null);
+      onTemplateSelect(0);
+    } else {
+      setActiveTemplate(id);
+      onTemplateSelect(id);
+    }
     setGeneratedMeme(null);
   };
 
@@ -174,7 +180,7 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-wrap -mx-4">
           {templates.map((template) => {
-            const isSelected = Number(activeTemplate) === Number(template.id);
+            const isSelected = activeTemplate === template.id;
             const shouldBlur = activeTemplate !== null && !isSelected;
 
             return (
@@ -186,8 +192,8 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
               >
                 <div
                   className={`bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 h-full
-                    ${shouldBlur ? "blur-sm" : ""}
-                    ${isSelected ? "ring-4 ring-blue-500 scale-105" : ""}`}
+          ${shouldBlur ? "blur-sm" : ""}
+          ${isSelected ? "ring-4 ring-blue-500 scale-105" : ""}`}
                 >
                   <div className="relative pt-[75%]">
                     <img
