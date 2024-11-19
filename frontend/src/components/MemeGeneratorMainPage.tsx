@@ -2,10 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
 
-interface Props {
-  onTemplateSelect: (id: number) => void;
-}
-
 interface GeneratedMeme {
   templateId: number;
   originalText: string;
@@ -13,7 +9,7 @@ interface GeneratedMeme {
   templateImage: string;
 }
 
-const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
+const MemeGeneratorMain = () => {
   const [templates, setTemplates] = useState<Emotion[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -58,10 +54,8 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
   const handleTemplateClick = (id: number) => {
     if (activeTemplate === id) {
       setActiveTemplate(null);
-      onTemplateSelect(0);
     } else {
       setActiveTemplate(id);
-      onTemplateSelect(id);
     }
     setGeneratedMeme(null);
   };
@@ -88,9 +82,7 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
 
         const data = await response.json();
 
-        const selectedTemplate = templates.find(
-          (t) => Number(t.id) === Number(activeTemplate)
-        );
+        const selectedTemplate = templates.find((t) => t.id === activeTemplate);
         if (selectedTemplate) {
           setGeneratedMeme({
             templateId: activeTemplate,
@@ -114,7 +106,6 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
     setGeneratedMeme(null);
     setActiveTemplate(null);
     setUserInput("");
-    onTemplateSelect(0);
     setError(null);
   };
 
@@ -192,8 +183,8 @@ const MemeGeneratorMain = ({ onTemplateSelect }: Props) => {
               >
                 <div
                   className={`bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 h-full
-          ${shouldBlur ? "blur-sm" : ""}
-          ${isSelected ? "ring-4 ring-blue-500 scale-105" : ""}`}
+                    ${shouldBlur ? "blur-sm" : ""}
+                    ${isSelected ? "ring-4 ring-blue-500 scale-105" : ""}`}
                 >
                   <div className="relative pt-[75%]">
                     <img
