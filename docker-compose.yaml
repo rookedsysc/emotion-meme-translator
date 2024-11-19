@@ -9,7 +9,6 @@ services:
       - "80:80"
     volumes:
       - ./frontend:/app
-    image: react-test-app_frontend:latest
 
   backend:
     build:
@@ -17,8 +16,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    image: react-test-app_backend:latest
-    deploy:
-      mode: replicated
-      replicas: 1
 
