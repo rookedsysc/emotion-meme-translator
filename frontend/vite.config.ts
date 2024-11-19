@@ -1,16 +1,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const ip = "localhost";
+const apiUrl = `http://${ip}:8080`;
+
 export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
       "/api": {
-        target: "http://192.168.0.41:8080",
+        target: apiUrl,
         changeOrigin: true,
       },
       "/translator": {
-        target: "http://192.168.0.41:8080",
+        target: apiUrl,
         changeOrigin: true,
       },
     },
