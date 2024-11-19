@@ -38,8 +38,10 @@ public class ImageController {
         // 파일 확장자에 따른 Content-Type 반환
         if (imageName.endsWith(".png")) {
             return "image/png";
-        } else if (imageName.endsWith(".jpg") || imageName.endsWith(".jpeg")) {
+        } else if (imageName.endsWith(".jpeg")) {
             return "image/jpeg";
+        } else if (imageName.endsWith(".jpg")) {
+            return "image/jpg";
         } else if (imageName.endsWith(".gif")) {
             return "image/gif";
         }
