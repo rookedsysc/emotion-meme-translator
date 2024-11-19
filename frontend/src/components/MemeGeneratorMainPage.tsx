@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
+import API_IP from "../common/ApiIp";
 
 interface GeneratedMeme {
   templateId: number;
@@ -66,7 +67,7 @@ const MemeGeneratorMain = () => {
       setApiLoading(true);
       try {
         const response = await fetch(
-          "http://172.30.1.22:8080/translator/translate",
+          `http://${API_IP}:8080/translator/translate`,
           {
             method: "POST",
             headers: {
