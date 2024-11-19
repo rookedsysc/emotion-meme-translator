@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const ip = "localhost";
+const ip = "backend";
 const apiUrl = `http://${ip}:8080`;
 
 export default defineConfig({
