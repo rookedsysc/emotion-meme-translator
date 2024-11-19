@@ -4,7 +4,10 @@ export const getImageUrl = (imagePath: string): string => {
   if (imagePath.startsWith("http")) {
     return imagePath;
   }
-  return imagePath; // proxy를 사용하므로 전체 URL이 필요 없음
+
+  // /images/sample1.jpeg -> /api/images/sample1.jpeg
+  const imageFileName = imagePath.split("/").pop();
+  return `/api/images/${imageFileName}`;
 };
 
 export const fetchEmotions = async (): Promise<Emotion[]> => {
