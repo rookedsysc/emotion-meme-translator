@@ -7,6 +7,8 @@ const apiUrl = `http://${ip}:8080`;
 export default defineConfig({
   plugins: [react()],
   server: {
+	host: true,
+    port: 5173,
     proxy: {
       "/api": {
         target: apiUrl,
