@@ -1,14 +1,19 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom';
-import MemeGeneratorMain from './components/MemeGeneratorMainPage';
+import "./App.css";
+import MemeGeneratorMain from "./components/MemeGeneratorMainPage";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [selectedTemplate, setSelectedTemplate] = useState<number | null>(null);
+
+  const handleTemplateSelect = (id: number) => {
+    setSelectedTemplate(id);
+  };
+
   return (
-    <Routes>
-      <Route path="/" element={<MemeGeneratorMain onTemplateSelect={() => {}} />} />
-      <Route path="/generate/:templateId" element={<MemeGeneratorMain onTemplateSelect={() => {}} />} />
-    </Routes>
-  )
-}
+    <div>
+      <MemeGeneratorMain onTemplateSelect={handleTemplateSelect} />
+    </div>
+  );
+};
 
-export default App
+export default App;
