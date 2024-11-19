@@ -66,20 +66,17 @@ const MemeGeneratorMain = () => {
     if (userInput.trim() && activeTemplate !== null) {
       setApiLoading(true);
       try {
-        const response = await fetch(
-          `http://${API_IP}:8080/translator/translate`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              accept: "*/*",
-            },
-            body: JSON.stringify({
-              id: activeTemplate,
-              prompt: userInput.trim(),
-            }),
-          }
-        );
+        const response = await fetch("/translator/translate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "*/*",
+          },
+          body: JSON.stringify({
+            id: activeTemplate,
+            prompt: userInput.trim(),
+          }),
+        });
 
         const data = await response.json();
 
