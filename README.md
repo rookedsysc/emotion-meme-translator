@@ -9,11 +9,12 @@
 상황을 밈으로 표현함으로써 유쾌하고 효과적인 의사소통을 가능하게 합니다.
 
 ## 2. 팀 구성
-
-- 프론트엔드 개발자: @rookedsysc
-- 백엔드 개발자: @SeungjaeDanLee
-- UI/UX 디자이너: @rookedsysc
-- 인프라 엔지니어: @jjeongmin98
+| 역할 | 담당자 |
+|------|--------|
+| 프론트엔드 개발 | @rookedsysc |
+| 백엔드 개발 | @SeungjaeDanLee |
+| UI/UX 디자인 | @rookedsysc |
+| 인프라 관리 | @jjeongmin98 |
   
 ## 3. 주요 기능
 
@@ -42,3 +43,6 @@ gantt
     프로젝트 진행     :2024-11-10, 12d
     section 마무리
     최종 점검 및 배포  :2024-11-22, 1d
+
+## 6. 도메인
+서비스 도메인: [meme.rookedsysc.com](http://meme.rookedsysc.com)
