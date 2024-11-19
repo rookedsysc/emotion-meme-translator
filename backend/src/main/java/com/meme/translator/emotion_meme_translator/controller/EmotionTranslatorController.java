@@ -2,6 +2,7 @@ package com.meme.translator.emotion_meme_translator.controller;
 
 import com.meme.translator.emotion_meme_translator.data.EmotionMemeData;
 import com.meme.translator.emotion_meme_translator.dto.EmotionMemeDto;
+import com.meme.translator.emotion_meme_translator.dto.EmotionMemeRequestDto;
 import com.meme.translator.emotion_meme_translator.service.emotionTranslator.EmotionTranslatorService;
 import com.meme.translator.emotion_meme_translator.service.openAi.OpenAiService;
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,9 @@ public class EmotionTranslatorController {
 
     // 2. 감정과 상황을 받아 GPT API에 요청하는 엔드포인트
     @PostMapping("/translate")
-    public Map<String, String> translateEmotion(@RequestBody EmotionMemeDto emotionMemeDto) {
-        long memeId = emotionMemeDto.getId();  // 전달된 ID
-        String situation = emotionMemeDto.getPrompt();  // 전달된 상황
+    public Map<String, String> translateEmotion(@RequestBody EmotionMemeRequestDto requestDto) {
+        long memeId = requestDto.getId();  // 전달된 ID
+        String situation = requestDto.getPrompt();  // 전달된 상황
 
         // EmotionMemeData에서 memeId와 일치하는 description을 찾기
         EmotionMemeDto selectedMeme = EmotionMemeData.EMOTION_MEME_LIST.stream()
