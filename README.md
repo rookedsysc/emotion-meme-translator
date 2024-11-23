@@ -57,14 +57,14 @@ gantt
 ## 7. 진행 상황
 | 작성자 | 역할 | 작업 내용 | 상태 | 완료일 | 비고 |
 |-------|------|----------|------|-------|------|
-| <td colspan="6" align="center">**1주차 ~ 2주차**</td> |
+| <td align="center">**1주차 ~ 2주차**</td> |
 | @rookedsysc | frontend, backend개발자 | 홈페이지 제작 | ✅ | 2024-11-19 | 완료 |
 | @SeungjaeDanLee | backend 개발자 | api 서버 생성 | ✅ | 2024-11-19 | 완료 |
 | @jjeongmin98 | infra 엔지니어 | front(node) container, front(react) contaer 생성 | ✅ | 2024-11-19 | 완료 |
 
 | 작성자 | 역할 | 작업 내용 | 상태 | 완료일 | 비고 |
 |-------|------|----------|------|-------|------|
-| <td colspan="6" align="center">**3주차**</td> |
+| <td align="center">**3주차**</td> |
 | @jjeongmin98 | infra 엔지니어 | nginx -> node 포워딩 | ✅ | 2024-11-23 | 완료 |
 | @jjeongmin98 | infra 엔지니어 | certbot을 통한 ssl 인증서 적용 | 🚧 | - | 진행중 |
 | @jjeongmin98 | infra 엔지니어 | ssl 인증서 자동 갱신 | ✅ | 2024-11-23 | 완료 |
