@@ -1,0 +1,5 @@
+#ban 등록된 ip 확인 
+sudo fail2ban-client status sshd
+
+#ban ip 해지
+sudo fail2ban-client set sshd unbanip [ip등록]

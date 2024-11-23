@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
-import API_IP from "../common/ApiIp";
+//import API_IP from "../common/ApiIp";
 
 interface GeneratedMeme {
   templateId: number;

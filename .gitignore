@@ -38,3 +38,9 @@ out/
 
 ### yaml ###
 backend/src/main/resources/application.yaml
+
+### nginx ###
+nginx/
+
+### certbot ###
+certbot/

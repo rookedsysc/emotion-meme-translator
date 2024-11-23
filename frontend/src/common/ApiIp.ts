@@ -1,3 +1,3 @@
-const API_IP = "backend";
+//const API_IP = "backend";
 
-export default API_IP;
+//export default API_IP;
