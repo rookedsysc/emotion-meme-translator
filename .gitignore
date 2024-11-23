@@ -44,3 +44,6 @@ nginx/
 
 ### certbot ###
 certbot/
+
+### logs ###
+logs/
