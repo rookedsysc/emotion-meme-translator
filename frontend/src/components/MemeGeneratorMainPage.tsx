@@ -4,6 +4,7 @@ import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
 import ShareButton from "./ShareButton";
 import { GeneratedMeme } from "../types/meme";
+import ReactConfetti from "react-confetti";
 //import API_IP from "../common/ApiIp";
 
 const MemeGeneratorMain = () => {
@@ -17,6 +18,7 @@ const MemeGeneratorMain = () => {
   );
   const [apiLoading, setApiLoading] = useState(false);
   const selectedTemplateRef = useRef<HTMLDivElement>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     const loadEmotions = async () => {
@@ -85,6 +87,8 @@ const MemeGeneratorMain = () => {
             transformedText: data.response,
             templateImage: getImageUrl(selectedTemplate.image),
           });
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), 5000);
         }
 
         setUserInput("");
@@ -166,6 +170,7 @@ const MemeGeneratorMain = () => {
   if (generatedMeme) {
     return (
       <main className="w-full min-h-screen bg-white p-4">
+        {showConfetti && <ReactConfetti />}
         {getMetaTags()}
         <article className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           <figure className="relative pt-[75%]">
