@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
+import ShareButton from "./ShareButton";
+import { GeneratedMeme } from "../types/meme";
 //import API_IP from "../common/ApiIp";
 
 const MemeGeneratorMain = () => {
@@ -136,13 +138,14 @@ const MemeGeneratorMain = () => {
             <div className="text-xl font-semibold">
               {generatedMeme.transformedText}
             </div>
-            <div className="flex justify-center pt-4">
+            <div className="flex justify-center gap-4 pt-4">
               <button
                 onClick={handleReset}
                 className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
               >
                 다시하기
               </button>
+              <ShareButton meme={generatedMeme} />
             </div>
           </div>
         </div>
