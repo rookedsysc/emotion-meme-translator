@@ -6,6 +6,10 @@ interface ShareButtonProps {
 }
 
 const ShareButton = ({ meme }: ShareButtonProps) => {
+  const getShareContent = () => {
+    return `${meme.transformedText}\n\n밈 생성기를 활용해서 내 기분을 밈으로 표현해보세요!\n${window.location.href}`;
+  };
+
   const handleShare = async () => {
     if (!navigator.share) {
       alert("브라우저가 공유 기능을 지원하지 않습니다.");
@@ -13,21 +17,13 @@ const ShareButton = ({ meme }: ShareButtonProps) => {
     }
 
     try {
-      // 공유할 텍스트 구성
-      const shareText = `${meme.transformedText}\n\n밈 생성기를 활용해서 내 기분을 밈으로 표현해보세요!\n${window.location.href}`;
-
-      const shareData = {
-        title: "럭키비키 밈 생성기",
-        text: shareText,
-      };
-
-      await navigator.share(shareData);
+      await navigator.share({
+        text: getShareContent(),
+      });
     } catch (error) {
       if (error instanceof Error) {
         if (error.name === "NotAllowedError") {
-          alert(
-            "공유 권한이 거부되었습니다. 브라우저 설정에서 권한을 허용해주세요."
-          );
+          alert("공유 권한이 거부되었습니다.");
         } else if (error.name !== "AbortError") {
           alert("공유하는 도중 오류가 발생했습니다.");
         }
@@ -38,27 +34,11 @@ const ShareButton = ({ meme }: ShareButtonProps) => {
 
   const handleCopy = async () => {
     try {
-      // 복사할 텍스트 구성
-      const textToCopy = `${meme.transformedText}\n\n밈 생성기를 활용해서 내 기분을 밈으로 표현해보세요!\n${window.location.href}`;
-
-      if (!navigator.clipboard) {
-        alert("브라우저가 클립보드 기능을 지원하지 않습니다.");
-        return;
-      }
-
-      await navigator.clipboard.writeText(textToCopy);
+      await navigator.clipboard.writeText(getShareContent());
       alert("텍스트가 클립보드에 복사되었습니다!");
     } catch (error) {
-      if (error instanceof Error) {
-        if (error.name === "NotAllowedError") {
-          alert(
-            "클립보드 접근이 거부되었습니다. 브라우저 설정에서 권한을 허용해주세요."
-          );
-        } else {
-          alert("복사하는 도중 오류가 발생했습니다.");
-          console.error("복사 오류:", error);
-        }
-      }
+      alert("복사하는 도중 오류가 발생했습니다.");
+      console.error("복사 오류:", error);
     }
   };
 
