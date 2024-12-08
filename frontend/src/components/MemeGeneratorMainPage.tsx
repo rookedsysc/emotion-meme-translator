@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
 import ShareButton from "./ShareButton";
@@ -24,6 +25,7 @@ const MemeGeneratorMain = () => {
         setTemplates(data);
         setLoading(false);
       } catch (err) {
+        console.error(err);
         setError("템플릿을 불러오는데 실패했습니다.");
         setLoading(false);
       }
@@ -88,6 +90,7 @@ const MemeGeneratorMain = () => {
         setUserInput("");
         setActiveTemplate(null);
       } catch (err) {
+        console.error(err);
         setError("밈 생성에 실패했습니다.");
       } finally {
         setApiLoading(false);
@@ -102,42 +105,89 @@ const MemeGeneratorMain = () => {
     setError(null);
   };
 
+  const getMetaTags = () => {
+    if (generatedMeme) {
+      return (
+        <Helmet>
+          <title>{generatedMeme.transformedText} | 밈 생성기</title>
+          <meta
+            name="description"
+            content={`${generatedMeme.originalText} → ${generatedMeme.transformedText}`}
+          />
+          <meta
+            property="og:title"
+            content={`${generatedMeme.transformedText} | 밈 생성기`}
+          />
+          <meta
+            property="og:description"
+            content={generatedMeme.originalText}
+          />
+          <meta property="og:image" content={generatedMeme.templateImage} />
+        </Helmet>
+      );
+    }
+
+    return (
+      <Helmet>
+        <title>나만의 밈 만들기 | 밈 생성기</title>
+        <meta
+          name="description"
+          content="AI 기반 밈 생성기로 재미있는 밈을 만들어보세요. 다양한 템플릿으로 당신만의 유머러스한 밈을 제작할 수 있습니다."
+        />
+        <meta property="og:title" content="나만의 밈 만들기 | 밈 생성기" />
+        <meta
+          property="og:description"
+          content="AI 기반 밈 생성기로 재미있는 밈을 만들어보세요."
+        />
+        <meta property="og:image" content="/images/logo.webp" />
+        <meta name="keywords" content="밈, 밈 생성기, AI 밈, 유머, 짤방" />
+      </Helmet>
+    );
+  };
+
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-white flex items-center justify-center">
+      <main className="w-full min-h-screen bg-white flex items-center justify-center">
+        {getMetaTags()}
         <div className="text-xl">로딩중...</div>
-      </div>
+      </main>
     );
   }
 
   if (error) {
     return (
-      <div className="w-full min-h-screen bg-white flex items-center justify-center">
+      <main className="w-full min-h-screen bg-white flex items-center justify-center">
+        {getMetaTags()}
         <div className="text-xl text-red-500">{error}</div>
-      </div>
+      </main>
     );
   }
 
   if (generatedMeme) {
     return (
-      <div className="w-full min-h-screen bg-white p-4">
-        <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="relative pt-[75%]">
+      <main className="w-full min-h-screen bg-white p-4">
+        {getMetaTags()}
+        <article className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+          <figure className="relative pt-[75%]">
             <img
               src={generatedMeme.templateImage}
-              alt="Selected Template"
+              alt={generatedMeme.transformedText}
               className="absolute inset-0 w-full h-full object-contain bg-white"
             />
-          </div>
+          </figure>
           <div className="p-6 space-y-4">
-            <div className="text-gray-500">원본 텍스트:</div>
-            <div className="text-lg font-medium">
-              {generatedMeme.originalText}
-            </div>
-            <div className="text-gray-500">변환된 텍스트:</div>
-            <div className="text-xl font-semibold">
-              {generatedMeme.transformedText}
-            </div>
+            <section>
+              <h2 className="text-gray-500">원본 텍스트:</h2>
+              <p className="text-lg font-medium">
+                {generatedMeme.originalText}
+              </p>
+            </section>
+            <section>
+              <h2 className="text-gray-500">변환된 텍스트:</h2>
+              <p className="text-xl font-semibold">
+                {generatedMeme.transformedText}
+              </p>
+            </section>
             <div className="flex justify-center gap-4 pt-4">
               <button
                 onClick={handleReset}
@@ -148,28 +198,30 @@ const MemeGeneratorMain = () => {
               <ShareButton meme={generatedMeme} />
             </div>
           </div>
-        </div>
-      </div>
+        </article>
+      </main>
     );
   }
 
   return (
-    <div className="w-full min-h-screen bg-white relative pb-[280px]">
-      <div className="w-full p-4 flex justify-center">
+    <main className="w-full min-h-screen bg-white relative pb-[280px]">
+      {getMetaTags()}
+      <header className="w-full p-4 flex justify-center">
         <img
           src="/images/logo.webp"
-          alt="Meme Generator Logo"
+          alt="밈 생성기 로고"
           className="w-4/5 h-auto max-h-80 object-fill rounded-3xl"
         />
-      </div>
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      </header>
+      <section className="max-w-7xl mx-auto px-4 py-8">
+        <h1 className="sr-only">밈 템플릿 목록</h1>
         <div className="flex flex-wrap -mx-4">
           {templates.map((template) => {
             const isSelected = activeTemplate === template.id;
             const shouldBlur = activeTemplate !== null && !isSelected;
 
             return (
-              <div
+              <article
                 key={template.id}
                 className="w-full sm:w-1/2 lg:w-1/3 p-4"
                 onClick={() => handleTemplateClick(template.id)}
@@ -180,13 +232,13 @@ const MemeGeneratorMain = () => {
                     ${shouldBlur ? "blur-sm" : ""}
                     ${isSelected ? "ring-4 ring-blue-500 scale-105" : ""}`}
                 >
-                  <div className="relative pt-[75%]">
+                  <figure className="relative pt-[75%]">
                     <img
                       src={getImageUrl(template.image)}
                       alt={template.title}
                       className="absolute inset-0 w-full h-full object-contain bg-white"
                     />
-                  </div>
+                  </figure>
                   <div className="p-4">
                     <h2 className="text-lg font-semibold mb-2">
                       {template.title}
@@ -196,14 +248,14 @@ const MemeGeneratorMain = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
-      </div>
+      </section>
 
       {activeTemplate !== null && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-3xl p-6 transform transition-transform duration-300 ease-in-out">
+        <section className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-3xl p-6 transform transition-transform duration-300 ease-in-out">
           <form onSubmit={handleSubmit} className="space-y-4">
             <textarea
               value={userInput}
@@ -229,9 +281,9 @@ const MemeGeneratorMain = () => {
               </button>
             </div>
           </form>
-        </div>
+        </section>
       )}
-    </div>
+    </main>
   );
 };
 
