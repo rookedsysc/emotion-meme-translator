@@ -38,6 +38,7 @@ services:
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
+    #cerbot 인증서 갱신 
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 3M & wait $${!}; done;'"
 
   backend:
@@ -55,17 +56,26 @@ services:
       context: ./db
       dockerfile: Dockerfile-db
     restart: always
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=meme    
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
     networks:
       app-network:
         ipv4_address: 172.21.0.30
+
+          #  jenkins:
+          #build:
+          #context: ./jenkins
+          #dockerfile: Dockerfile-jenkins
+          #restart: unless-stopped
+          #ports:
+          #- "8888:2024"
+          #volumes:
+          #- ./jenkins:/var/jenkins_home
+          #- /var/run/docker.sock:/var/run/docker.sock
+          #environment:
+          #- JENKINS_OPTS=--httpPort=2024
   
 networks:
   app-network:
@@ -76,6 +86,6 @@ networks:
         - subnet: 172.21.0.0/16
 
 volumes:
-  postgres_data:
+  db:
 
 

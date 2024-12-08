@@ -47,3 +47,9 @@ certbot/
 
 ### logs ###
 logs/
+
+### db ###
+db/
+
+### jenkins ###
+jenkins/

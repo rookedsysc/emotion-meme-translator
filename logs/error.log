@@ -1,54 +1,8 @@
-2024/11/23 07:25:20 [notice] 1#1: using the "epoll" event method
-2024/11/23 07:25:20 [notice] 1#1: nginx/1.27.2
-2024/11/23 07:25:20 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
-2024/11/23 07:25:20 [notice] 1#1: OS: Linux 6.8.0-48-generic
-2024/11/23 07:25:20 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
-2024/11/23 07:25:20 [notice] 1#1: start worker processes
-2024/11/23 07:25:20 [notice] 1#1: start worker process 29
-2024/11/23 07:25:20 [notice] 1#1: start worker process 30
-2024/11/23 07:27:52 [emerg] 31#31: open() "/etc/nginx/reload" failed (2: No such file or directory)
-2024/11/23 07:28:02 [notice] 37#37: signal process started
-2024/11/23 07:28:02 [notice] 1#1: signal 1 (SIGHUP) received from 37, reconfiguring
-2024/11/23 07:28:02 [notice] 1#1: reconfiguring
-2024/11/23 07:28:02 [notice] 1#1: using the "epoll" event method
-2024/11/23 07:28:02 [notice] 1#1: start worker processes
-2024/11/23 07:28:02 [notice] 1#1: start worker process 43
-2024/11/23 07:28:02 [notice] 1#1: start worker process 44
-2024/11/23 07:28:02 [notice] 29#29: gracefully shutting down
-2024/11/23 07:28:02 [notice] 29#29: exiting
-2024/11/23 07:28:02 [notice] 30#30: gracefully shutting down
-2024/11/23 07:28:02 [notice] 30#30: exiting
-2024/11/23 07:28:02 [notice] 30#30: exit
-2024/11/23 07:28:02 [notice] 29#29: exit
-2024/11/23 07:28:02 [notice] 1#1: signal 17 (SIGCHLD) received from 30
-2024/11/23 07:28:02 [notice] 1#1: worker process 30 exited with code 0
-2024/11/23 07:28:02 [notice] 1#1: signal 29 (SIGIO) received
-2024/11/23 07:28:02 [notice] 1#1: signal 17 (SIGCHLD) received from 29
-2024/11/23 07:28:02 [notice] 1#1: worker process 29 exited with code 0
-2024/11/23 07:28:02 [notice] 1#1: signal 29 (SIGIO) received
-2024/11/23 07:29:04 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
-2024/11/23 07:29:04 [notice] 43#43: gracefully shutting down
-2024/11/23 07:29:04 [notice] 43#43: exiting
-2024/11/23 07:29:04 [notice] 43#43: exit
-2024/11/23 07:29:04 [notice] 44#44: gracefully shutting down
-2024/11/23 07:29:04 [notice] 44#44: exiting
-2024/11/23 07:29:04 [notice] 44#44: exit
-2024/11/23 07:29:04 [notice] 1#1: signal 17 (SIGCHLD) received from 44
-2024/11/23 07:29:04 [notice] 1#1: worker process 44 exited with code 0
-2024/11/23 07:29:04 [notice] 1#1: signal 29 (SIGIO) received
-2024/11/23 07:29:04 [notice] 1#1: signal 17 (SIGCHLD) received from 43
-2024/11/23 07:29:04 [notice] 1#1: worker process 43 exited with code 0
-2024/11/23 07:29:04 [notice] 1#1: exit
-2024/11/23 07:29:14 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:60
-2024/11/23 07:34:56 [emerg] 1#1: unknown log format "main" in /etc/nginx/nginx.conf:57
-2024/11/23 07:39:57 [emerg] 1#1: "log_format" directive is not allowed here in /etc/nginx/nginx.conf:59
-2024/11/23 07:43:21 [emerg] 1#1: invalid log level "main" in /etc/nginx/nginx.conf:61
-2024/11/23 07:49:02 [emerg] 1#1: duplicate "log_format" name "main" in /etc/nginx/nginx.conf:105
-2024/11/23 07:49:50 [notice] 1#1: using the "epoll" event method
-2024/11/23 07:49:50 [notice] 1#1: nginx/1.27.2
-2024/11/23 07:49:50 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
-2024/11/23 07:49:50 [notice] 1#1: OS: Linux 6.8.0-48-generic
-2024/11/23 07:49:50 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
-2024/11/23 07:49:50 [notice] 1#1: start worker processes
-2024/11/23 07:49:50 [notice] 1#1: start worker process 29
-2024/11/23 07:49:50 [notice] 1#1: start worker process 30
+2024/12/08 07:42:34 [notice] 1#1: using the "epoll" event method
+2024/12/08 07:42:34 [notice] 1#1: nginx/1.27.2
+2024/12/08 07:42:34 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2024/12/08 07:42:34 [notice] 1#1: OS: Linux 6.8.0-48-generic
+2024/12/08 07:42:34 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/08 07:42:34 [notice] 1#1: start worker processes
+2024/12/08 07:42:34 [notice] 1#1: start worker process 29
+2024/12/08 07:42:34 [notice] 1#1: start worker process 30
