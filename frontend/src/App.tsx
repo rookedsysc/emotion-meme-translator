@@ -1,10 +1,13 @@
+import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 import MemeGeneratorMain from "./components/MemeGeneratorMainPage";
 
 const App = () => {
   return (
     <div>
-      <MemeGeneratorMain />
+      <HelmetProvider>
+        <MemeGeneratorMain />
+      </HelmetProvider>
     </div>
   );
 };
