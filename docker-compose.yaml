@@ -28,9 +28,6 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
       - ./logs:/var/log/nginx
-    depends_on:
-      - fronted
-      - backend
     networks:
       app-network:
         ipv4_address: 172.21.0.5
