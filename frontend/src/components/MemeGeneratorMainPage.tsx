@@ -3,13 +3,6 @@ import { Emotion } from "../types/emotion";
 import { fetchEmotions, getImageUrl } from "../api/emotions";
 //import API_IP from "../common/ApiIp";
 
-interface GeneratedMeme {
-  templateId: number;
-  originalText: string;
-  transformedText: string;
-  templateImage: string;
-}
-
 const MemeGeneratorMain = () => {
   const [templates, setTemplates] = useState<Emotion[]>([]);
   const [loading, setLoading] = useState(true);
