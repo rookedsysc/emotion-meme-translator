@@ -3,6 +3,7 @@ package com.meme.translator.emotion_meme_translator.service.openAi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class OpenAiServiceImpl implements OpenAiService{
 
     private final RestTemplate restTemplate;

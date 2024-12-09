@@ -38,3 +38,4 @@ out/
 
 ### yaml ###
 backend/src/main/resources/application.yaml
+/src/main/resources/config/emotion-meme-translator-443508-4f23a87628ff.json
