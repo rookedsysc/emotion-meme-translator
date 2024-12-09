@@ -1,6 +1,11 @@
 import { Emotion } from "../types/emotion";
 
 export const getImageUrl = (imagePath: string): string => {
+  if (!imagePath) {
+    console.error("Image path is undefined or empty");
+    return ""; // 또는 기본값을 반환
+  }
+
   if (imagePath.startsWith("http")) {
     return imagePath;
   }
@@ -12,7 +17,7 @@ export const getImageUrl = (imagePath: string): string => {
 
 export const fetchEmotions = async (): Promise<Emotion[]> => {
   try {
-    const response = await fetch("/translator/emotions");
+    const response = await fetch("/meme/emotions");
     if (!response.ok) {
       throw new Error("Failed to fetch emotions");
     }
