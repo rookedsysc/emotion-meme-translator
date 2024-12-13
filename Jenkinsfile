@@ -1,36 +1,25 @@
 pipeline {
-  agent any
-  triggers {
-    githubPush()
-  }
-  stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'main',
-            url: 'https://github.com/rookedsysc/emotion-meme-translator.git',
-            credentialsId: 'jjeongmin98'
-      }
-    }
-    stage('stop container') {
-      parallel {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/rookedsysc/emotion-meme-translator.git',
+                    credentialsId: 'jjeongmin98_git'
+            }
+        }
         stage('Deploy') {
-          steps {
-            sh 'docker-compose down'
-          }
+            steps {
+                sh '''
+                    cd ${WORKSPACE}  // 프로젝트 디렉토리로 이동
+                    docker-compose down
+                    docker-compose up -d
+                '''
+            }
         }
-    stage('Deploy') {
-      parallel {
-        stage('Deploy') {
-          steps {
-            sh 'docker-compose up --build -d --force-recreate'
-          }
-        }
-        stage('Check_container') {
-          steps {
-            sh 'docker ps -a'
-          }
-        }
-      }
     }
-  }
 }
+Docker 그룹에 Jenkins 사용자 추가:
+bash
+RUN groupadd -f docker
+RUN usermod -aG docker jenkins
