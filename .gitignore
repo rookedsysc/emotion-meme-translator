@@ -54,6 +54,5 @@ db/
 ### jenkins ###
 jenkins/
 /dockerfile-jenkins
-/jenkinsfile
 /jenkins_start.sh
 

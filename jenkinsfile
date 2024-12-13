@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+  triggers {
+    githubPush()
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main',
+            url: 'https://github.com/jjeongmin98/Test.git',
+            credentialsId: 'jjeongmin98'
+      }
+    }
+    stage('stop container') {
+      parallel {
+        stage('Deploy') {
+          steps {
+            sh 'docker-compose down'
+          }
+        }
+    stage('Deploy') {
+      parallel {
+        stage('Deploy') {
+          steps {
+            sh 'docker-compose up --build -d --force-recreate'
+          }
+        }
+        stage('Check_container') {
+          steps {
+            sh 'docker ps -a'
+          }
+        }
+      }
+    }
+  }
+}
