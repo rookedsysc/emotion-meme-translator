@@ -24,6 +24,7 @@ const MemeGeneratorMain = () => {
     const loadEmotions = async () => {
       try {
         const data = await fetchEmotions();
+        console.log("Fetched templates:", data);  // 데이터를 확인하는 로그
         setTemplates(data);
         setLoading(false);
       } catch (err) {
@@ -65,7 +66,7 @@ const MemeGeneratorMain = () => {
     if (userInput.trim() && activeTemplate !== null) {
       setApiLoading(true);
       try {
-        const response = await fetch("/translator/translate", {
+        const response = await fetch("/meme/translate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -85,7 +86,7 @@ const MemeGeneratorMain = () => {
             templateId: activeTemplate,
             originalText: userInput,
             transformedText: data.response,
-            templateImage: getImageUrl(selectedTemplate.image),
+            templateImage: getImageUrl(selectedTemplate.changedImgName),
           });
           setShowConfetti(true);
           setTimeout(() => setShowConfetti(false), 5000);
@@ -222,6 +223,9 @@ const MemeGeneratorMain = () => {
         <h1 className="sr-only">밈 템플릿 목록</h1>
         <div className="flex flex-wrap -mx-4">
           {templates.map((template) => {
+            console.log("Template id:", template.id);
+            console.log("Template image:", template.changedImgName);  // 각 템플릿의 이미지 경로를 로그로 확인
+
             const isSelected = activeTemplate === template.id;
             const shouldBlur = activeTemplate !== null && !isSelected;
 
@@ -239,7 +243,7 @@ const MemeGeneratorMain = () => {
                 >
                   <figure className="relative pt-[75%]">
                     <img
-                      src={getImageUrl(template.image)}
+                      src={getImageUrl(template.changedImgName)}
                       alt={template.title}
                       className="absolute inset-0 w-full h-full object-contain bg-white"
                     />

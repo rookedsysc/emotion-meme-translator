@@ -14,7 +14,7 @@ export default defineConfig({
         target: apiUrl,
         changeOrigin: true,
       },
-      "/translator": {
+      "/meme": {
         target: apiUrl,
         changeOrigin: true,
       },

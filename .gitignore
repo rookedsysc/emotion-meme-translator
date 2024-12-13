@@ -53,3 +53,5 @@ db/
 
 ### jenkins ###
 jenkins/
+dockerfile-jenkins
+
