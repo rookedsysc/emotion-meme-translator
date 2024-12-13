@@ -55,3 +55,5 @@ db/
 jenkins/
 dockerfile-jenkins
 jenkinsfile
+jenkins_start.sh
+
