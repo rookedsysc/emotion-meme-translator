@@ -1,8 +1,30 @@
-2024/12/08 07:42:34 [notice] 1#1: using the "epoll" event method
-2024/12/08 07:42:34 [notice] 1#1: nginx/1.27.2
-2024/12/08 07:42:34 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
-2024/12/08 07:42:34 [notice] 1#1: OS: Linux 6.8.0-48-generic
-2024/12/08 07:42:34 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
-2024/12/08 07:42:34 [notice] 1#1: start worker processes
-2024/12/08 07:42:34 [notice] 1#1: start worker process 29
-2024/12/08 07:42:34 [notice] 1#1: start worker process 30
+2024/12/13 06:40:19 [notice] 1#1: using the "epoll" event method
+2024/12/13 06:40:19 [notice] 1#1: nginx/1.27.2
+2024/12/13 06:40:19 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2024/12/13 06:40:19 [notice] 1#1: OS: Linux 6.8.0-49-generic
+2024/12/13 06:40:19 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/13 06:40:19 [notice] 1#1: start worker processes
+2024/12/13 06:40:19 [notice] 1#1: start worker process 21
+2024/12/13 06:40:19 [notice] 1#1: start worker process 22
+2024/12/13 06:44:37 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/12/13 06:44:37 [notice] 21#21: gracefully shutting down
+2024/12/13 06:44:37 [notice] 21#21: exiting
+2024/12/13 06:44:37 [notice] 22#22: gracefully shutting down
+2024/12/13 06:44:37 [notice] 22#22: exiting
+2024/12/13 06:44:37 [notice] 22#22: exit
+2024/12/13 06:44:37 [notice] 21#21: exit
+2024/12/13 06:44:37 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2024/12/13 06:44:37 [notice] 1#1: worker process 21 exited with code 0
+2024/12/13 06:44:37 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/13 06:44:37 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2024/12/13 06:44:37 [notice] 1#1: worker process 22 exited with code 0
+2024/12/13 06:44:37 [notice] 1#1: exit
+2024/12/13 06:44:43 [emerg] 1#1: host not found in upstream "frontend:5173" in /etc/nginx/nginx.conf:15
+2024/12/13 06:46:15 [notice] 1#1: using the "epoll" event method
+2024/12/13 06:46:15 [notice] 1#1: nginx/1.27.2
+2024/12/13 06:46:15 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2024/12/13 06:46:15 [notice] 1#1: OS: Linux 6.8.0-49-generic
+2024/12/13 06:46:15 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/13 06:46:15 [notice] 1#1: start worker processes
+2024/12/13 06:46:15 [notice] 1#1: start worker process 22
+2024/12/13 06:46:15 [notice] 1#1: start worker process 23
