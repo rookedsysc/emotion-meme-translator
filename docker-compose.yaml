@@ -26,10 +26,12 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-      - ./logs:/var/log/nginx
+      - /home/meme/var/app/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/meme/var/app/certbot/conf:/etc/letsencrypt
+      - /home/meme/var/app/certbot/www:/var/www/certbot
+      - /home/meme/var/app/logs:/var/log/nginx
+    depends_on:
+      - frontend
     networks:
       app-network:
         ipv4_address: 172.21.0.5
