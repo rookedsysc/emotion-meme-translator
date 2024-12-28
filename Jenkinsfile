@@ -19,7 +19,3 @@ pipeline {
         }
     }
 }
-//Docker 그룹에 Jenkins 사용자 추가:
-bash
-RUN groupadd -f docker
-RUN usermod -aG docker jenkins
