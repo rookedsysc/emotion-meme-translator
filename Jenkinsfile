@@ -13,6 +13,7 @@ pipeline {
                 sh '''
                     cd /home/meme/var/app  // 프로젝트 디렉토리로 이동
                     docker-compose down
+					docker-compose build .
                     docker-compose up -d
                 '''
             }
